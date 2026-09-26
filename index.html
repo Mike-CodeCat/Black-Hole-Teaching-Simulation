@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="视界之旅：面向零基础学习者的黑洞教学仿真平台——从牛顿引力到广义相对论，实时光线追踪的黑洞、光线弯曲、时间膨胀、潮汐力、霍金辐射与引力波仿真。">
+  <meta name="theme-color" content="#05060a">
+  <title>视界之旅 · 黑洞教学仿真平台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='.45' stop-color='%23000'/%3E%3Cstop offset='.55' stop-color='%23ffcf7a'/%3E%3Cstop offset='.75' stop-color='%23ff7a2a' stop-opacity='.6'/%3E%3Cstop offset='1' stop-color='%23ff7a2a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='31' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="backdrop" aria-hidden="true"></canvas>
+  <header class="topbar">
+    <button id="menu-btn" class="menu-btn" aria-label="打开课程目录"><span></span><span></span><span></span></button>
+    <a class="brand" href="#/">
+      <span class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-name">视界之旅</span>
+      <span class="brand-sub">黑洞教学仿真平台</span>
+    </a>
+    <nav class="topnav">
+      <a href="#/learn">学习路径</a>
+      <a href="#/explore">沉浸漫游</a>
+      <a href="#/quiz">知识测验</a>
+      <a href="#/glossary">术语表</a>
+    </nav>
+  </header>
+  <aside id="drawer" class="drawer" aria-label="课程目录"></aside>
+  <div id="drawer-mask" class="drawer-mask"></div>
+  <main id="view"></main>
+
+  <script defer src="js/util.js"></script>
+  <script defer src="js/bh-renderer.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/chapters/ch01-escape.js"></script>
+  <script defer src="js/chapters/ch02-special-relativity.js"></script>
+  <script defer src="js/chapters/ch03-spacetime.js"></script>
+  <script defer src="js/chapters/ch04-anatomy.js"></script>
+  <script defer src="js/chapters/ch05-lensing.js"></script>
+  <script defer src="js/chapters/ch06-orbits.js"></script>
+  <script defer src="js/chapters/ch07-time.js"></script>
+  <script defer src="js/chapters/ch08-tidal.js"></script>
+  <script defer src="js/chapters/ch09-accretion.js"></script>
+  <script defer src="js/chapters/ch10-lifecycle.js"></script>
+  <script defer src="js/chapters/ch11-gravitational-waves.js"></script>
+  <script defer src="js/pages/home.js"></script>
+  <script defer src="js/pages/explore.js"></script>
+  <script defer src="js/pages/quiz.js"></script>
+  <script defer src="js/pages/glossary.js"></script>
+</body>
+</html>
