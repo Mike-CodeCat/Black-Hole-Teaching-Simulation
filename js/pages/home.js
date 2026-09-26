@@ -40,7 +40,8 @@
         U.el('div', { class: 'hero-actions' },
           U.el('a', { class: 'btn primary', href: '#/ch/' + (App.chapters[0] ? App.chapters[0].id : ''), text: '开始学习 →' }),
           U.el('a', { class: 'btn', href: '#/explore', text: '✦ 沉浸漫游：坠入黑洞' }),
-          U.el('a', { class: 'btn', href: '#/learn', text: '查看课程目录' }))),
+          U.el('a', { class: 'btn', href: '#/learn', text: '查看课程目录' }),
+          U.el('a', { class: 'btn btn-invasion', href: '#/invasion', text: '☄ 黑洞入侵太阳系' }))),
         U.el('div', { class: 'hero-hint', text: '↻ 拖动旋转视角 · 滚轮缩放 · 这是实时光线追踪的画面，不是视频' }));
 
       root.appendChild(U.el('div', { class: 'section-title' },
