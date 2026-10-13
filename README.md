@@ -1,32 +1,60 @@
 # 视界之旅 · 黑洞教学仿真平台
 
-> 大学物理实践作业 —— 面向**零基础**学习者的黑洞交互式教学平台。
+> 面向**零基础**学习者的黑洞交互式教学平台（大学物理实践作业）。
 > 从“扔石头”讲起，一步步走到广义相对论；每个知识点都配有可以亲手操作的物理仿真，
-> 并用 GPU 实时光线追踪渲染出具有电影级视觉效果的黑洞。
+> 并用 GPU 实时光线追踪渲染出电影级的黑洞画面。
 
-## ✨ 特色
+**在线体验**：<https://mike-codecat.github.io/Black-Hole-Teaching-Simulation/>
 
-- **实时广义相对论光线追踪**：每个像素都在弯曲时空中逆向追踪光线，呈现引力透镜、吸积盘、多普勒集束、引力红移、光子环、爱因斯坦环，并支持 EHT 望远镜模拟。
-- **11 章循序渐进的课程 + 20 余个交互仿真**，每章包含讲解、公式、仿真实验、趣闻、核心结论与思考题。
+纯静态网页：**不需要安装任何依赖、不需要编译、可以离线运行**。下载下来，双击就能用。
+
+## ✨ 内容一览
+
+- **实时广义相对论光线追踪**：每个像素都在弯曲时空中逆向追踪光线，呈现引力透镜、吸积盘、多普勒集束、引力红移、黑洞阴影与光子环，支持 EHT 望远镜模拟。
+- **11 章课程 + 20 余个交互仿真**：每章包含讲解、公式、仿真实验、趣闻、核心结论与思考题。
 - **沉浸漫游**：驾驶飞船一路坠入事件视界，实时显示时间膨胀、逃逸速度与潮汐力。
+- **黑洞入侵太阳系**：从真实行星位置出发的 N 体引力仿真，包含潮汐瓦解、吸积耀发与地球的命运，并附“严格物理论证”面板。
 - **知识测验**（16 题，附解析）与**术语表**（30+ 条，可搜索）。
-- **纯前端、零依赖、可离线**：无需安装任何软件，也无需联网。
 
-## 🚀 如何运行
+## 🚀 在本地运行
 
-**方法一（最简单）**：直接双击打开 `index.html`（推荐 Chrome / Edge 最新版，并开启硬件加速）。
-
-**方法二（本地服务器）**：
+### 1. 获取代码
 
 ```bash
-# 任选其一
-python3 -m http.server 8080
+git clone https://github.com/Mike-CodeCat/Black-Hole-Teaching-Simulation.git
+cd Black-Hole-Teaching-Simulation
+```
+
+不用 git 也可以：在仓库页面点击绿色的 **Code → Download ZIP**，然后解压。
+
+### 2. 打开
+
+**方法一：直接双击 `index.html`。** 所有脚本都是普通 `<script>`，不依赖服务器，用浏览器打开就能运行。
+
+**方法二：启动一个本地静态服务器**（某些浏览器对本地文件有限制，或想用手机访问时用这种方式）：
+
+```bash
+# 任选其一，然后访问 http://localhost:8080
+python3 -m http.server 8080        # Windows 上可能是 python -m http.server 8080
 npx http-server -p 8080
 ```
 
-然后访问 <http://localhost:8080>。
+同一局域网内的手机可以访问 `http://<你电脑的局域网 IP>:8080`。
 
-**方法三（在线部署）**：在 GitHub 仓库 Settings → Pages 中选择该分支的根目录即可发布为网站。
+### 3. 浏览器要求
+
+- 推荐最新版 **Chrome / Edge**，Firefox 也可以；需要支持 **WebGL**（优先使用 WebGL 2，不支持时自动退回 WebGL 1）。
+- 请开启浏览器的**硬件加速**（Chrome：设置 → 系统 → “使用图形加速功能”）。
+- 黑洞画面由显卡实时计算，独立显卡或较新的集成显卡效果最好；渲染器会根据帧率**自动调整分辨率**。
+
+## 🛠 常见问题
+
+| 现象 | 解决办法 |
+| --- | --- |
+| 黑洞区域黑屏，或提示“不支持 WebGL” | 打开浏览器硬件加速并重启浏览器；在地址栏输入 `chrome://gpu` 查看 WebGL 是否可用；更新显卡驱动。 |
+| 画面卡顿 | 在“吸积盘与黑洞照片”章节或“沉浸漫游”中把“渲染质量”调为“流畅（低）”；笔记本请插上电源、使用独立显卡；关闭其它占用显卡的标签页。 |
+| 双击打开后功能异常 | 换用上面的“方法二”，通过本地服务器访问。 |
+| 学习进度丢失 | 进度保存在浏览器本地存储（localStorage）中，换浏览器、清除浏览数据或使用无痕模式时不会保留。 |
 
 ## 📚 课程目录
 
@@ -43,49 +71,78 @@ npx http-server -p 8080
 | 观测与前沿 | 9. 吸积盘与黑洞照片 | 实时黑洞光线追踪工作室（含 EHT 模式） |
 | | 10. 黑洞的一生：诞生与蒸发 | 恒星的归宿、霍金辐射计算器 |
 | | 11. 引力波：聆听黑洞并合 | 双黑洞并合（波场 + 波形 + 声音）、LIGO 探测器 |
+| 拓展 | 沉浸漫游 · 黑洞入侵太阳系 · 知识测验 · 术语表 | |
+
+## 🗂 目录结构
+
+```
+index.html                入口页面（按顺序引入所有脚本）
+css/style.css             全部样式
+js/util.js                工具：DOM 构建、画布、滑块等控件、单位格式化、物理常数
+js/app.js                 路由、章节注册、页面构建器、学习进度
+js/bh-renderer.js         WebGL 黑洞光线追踪渲染器（首页、第 5/9 章、沉浸漫游共用）
+js/chapters/ch*.js        11 个章节，每个文件注册一章
+js/pages/*.js             首页、学习路径、沉浸漫游、黑洞入侵、测验、术语表
+js/invasion/physics.js    黑洞入侵太阳系：N 体物理引擎（也可在 Node.js 中单独运行）
+js/invasion/render.js     黑洞入侵太阳系：WebGL 渲染器
+```
+
+没有构建步骤：修改任何文件后刷新浏览器即可看到效果。
+
+## 🧩 二次开发
+
+**新增一章**：在 `js/chapters/` 下新建文件，并在 `index.html` 中 `js/app.js` 之后用 `<script defer>` 引入：
+
+```js
+(function () {
+  App.chapter({
+    id: 'my-chapter', num: 12, part: 'C',          // part：A 基础铺垫 / B 走近黑洞 / C 观测与前沿
+    title: '我的新章节', subtitle: '一句话简介',
+    summary: '显示在课程卡片上的介绍', sims: ['仿真名称'],
+    build(ctx) {
+      ctx.section('小节标题', '<p>正文，可以写 HTML</p>');
+      ctx.eq('E = mc<sup>2</sup>', '公式说明');
+      ctx.callout('fact', '<p>趣闻</p>');                // tip / think / fact / warn / key
+      const s = ctx.sim({ title: '仿真标题', desc: '说明' });
+      const cv = U.canvas(s.stage, { aspect: 16 / 9 });
+      U.slider(s.panel, { label: '参数', min: 0, max: 1, value: 0.5, onInput: (v) => {} });
+      ctx.loop((dt) => { /* 每帧绘制到 cv.ctx */ }, s.box);   // 离开页面时自动停止
+      ctx.think('思考题', '解析');
+    },
+  });
+})();
+```
+
+**调整黑洞外观**：`js/bh-renderer.js` 中的默认参数（`diskTemp` 吸积盘温度、`diskIn` / `diskOut` 盘内外半径、`bloom` 泛光等），以及 `QUALITY` 中各档位的光线积分步数。
+
+**修改“黑洞入侵”场景**：`js/pages/invasion.js` 顶部的 `PRESETS`（黑洞质量 `Mbh`、来袭速度 `vinf`、近日距离 `q`、轨道倾角等）。
+
+## 🌐 发布你自己的副本
+
+- **GitHub Pages**：Fork 本仓库 → Settings → Pages → 选择分支与根目录（`/`）→ 保存，几分钟后即可通过 `https://<你的用户名>.github.io/<仓库名>/` 访问。
+- **任意静态托管**（Nginx、Netlify、Vercel、学校服务器等）：把 `index.html`、`css/`、`js/` 原样上传即可，无需任何服务端程序。
 
 ## 🔬 物理模型说明
 
 | 模块 | 方法 |
 | --- | --- |
-| 3D 黑洞渲染 (`js/bh-renderer.js`) | 史瓦西时空光子轨道等价于 `x'' = −(3/2)h²x/r⁵`（单位 rₛ=1），在片元着色器中用速度 Verlet 积分；吸积盘采用 Novikov–Thorne 型温度分布 `T ∝ r^(-3/4)(1−√(r_in/r))^(1/4)`，颜色为黑体谱，亮度 ∝ g⁴（g 为多普勒因子 × 引力红移因子）；HDR 泛光 + ACES 色调映射。 |
-| 光线偏折 (第 5 章) | RK4 积分光子轨道方程，偏折角与弱场公式 2rₛ/b（含二阶修正）对比验证。 |
-| 轨道 (第 6 章) | 类时测地线 `x'' = −Mx/r³ − 3ML²x/r⁵`，蛙跳积分，自动测量近心点进动。 |
-| 坠落 (第 7 章) | 径向测地线的摆线参数化解 + 乌龟坐标 `r* = r + rₛ ln(r/rₛ − 1)` 计算信号到达时间与红移。 |
-| 潮汐瓦解 (第 8 章) | 600 个测试粒子 + 均匀球自引力近似。 |
-| 霍金辐射 (第 10 章) | `T = ħc³/(8πGMk_B)`，`P = ħc⁶/(15360πG²M²)`，`t = 5120πG²M³/(ħc⁴)`。 |
-| 引力波 (第 11 章) | Peters 四极公式 `da/dt = −(64/5)ν/a³`（G=c=M=1），推迟势波场，准正则模铃宕。 |
+| 3D 黑洞渲染（`js/bh-renderer.js`） | 史瓦西时空光子轨道等价于 `x'' = −(3/2)h²x/r⁵`（单位 rₛ = 1），在片元着色器中用速度 Verlet 积分；吸积盘采用 Novikov–Thorne 型温度分布 `T ∝ r^(-3/4)(1−√(r_in/r))^(1/4)`，颜色为黑体谱，亮度 ∝ g⁴（g 为多普勒因子 × 引力红移因子）；HDR 泛光 + ACES 色调映射。 |
+| 光线偏折（第 5 章） | RK4 积分光子轨道方程，偏折角与弱场公式 2rₛ/b（含二阶修正）对比验证。 |
+| 轨道（第 6 章） | 类时测地线 `x'' = −Mx/r³ − 3ML²x/r⁵`，蛙跳积分，自动测量近心点进动。 |
+| 坠落（第 7 章） | 径向测地线的摆线参数化解 + 乌龟坐标 `r* = r + rₛ ln(r/rₛ − 1)` 计算信号到达时间与红移。 |
+| 潮汐瓦解（第 8 章） | 600 个测试粒子 + 均匀球自引力近似。 |
+| 霍金辐射（第 10 章） | `T = ħc³/(8πGMk_B)`，`P = ħc⁶/(15360πG²M²)`，`t = 5120πG²M³/(ħc⁴)`。 |
+| 引力波（第 11 章） | Peters 四极公式 `da/dt = −(64/5)ν/a³`（G = c = M = 1），推迟势波场，准正则模铃宕。 |
+| 黑洞入侵太阳系（`js/invasion/`） | 太阳、八大行星、月球与黑洞的完整 N 体引力，Yoshida 四阶辛积分 + 自适应步长；行星初始位置取自 JPL J2000 轨道根数；潮汐半径 `r_t = R(M_BH/m)^(1/3)` 触发瓦解，碎片为有质量粒子（冻结近似）；吸积光度按爱丁顿极限饱和；黑洞的光线偏折采用拟合的史瓦西精确偏折角公式。 |
 
-教学所需的简化（不旋转黑洞、夸张的振幅/颜色、示意性的动画等）均已在页面中标注。
+教学所需的简化（不旋转黑洞、夸张的振幅与颜色、示意性动画等）均已在页面中标注。
 
-## 🗂 目录结构
-
-```
-index.html              入口
-css/style.css           样式
-js/util.js              工具：DOM、画布、控件、单位格式化、物理常数
-js/app.js               路由、章节注册、页面构建器、学习进度
-js/bh-renderer.js       WebGL 黑洞光线追踪渲染器
-js/chapters/ch*.js      11 个章节（每章独立注册）
-js/pages/*.js           首页、沉浸漫游、测验、术语表
-```
-
-新增章节只需在 `js/chapters/` 下新建文件，调用 `App.chapter({...})` 注册，并在 `index.html` 中引入即可。
-
-## 🖥 部署到 codecat 面板服务器
-
-`deploy/` 目录提供一键部署（遵守面板部署规则：应用 id `blackhole`，代码只放 `/home/codecat/apps/blackhole/`，端口自动在 3000–3999 中选空闲端口（优先 3210），进程用户 codecat，Python 标准库无依赖，`GET /health` → `{"ok":true}`，只通过 `panel-register` 登记）。
-
-在**已配置 SSH 密钥的电脑**上，于项目根目录执行：
+**自行验证物理引擎**：`js/invasion/physics.js` 可以直接在 Node.js 中运行，例如检验 10 年积分的能量守恒：
 
 ```bash
-bash deploy/deploy.sh                 # macOS / Linux / Git Bash / WSL，默认 codecat@100.113.81.29
-bash deploy/deploy.sh 192.168.3.36    # 或用内网地址
+node -e "const B=require('./js/invasion/physics.js'); const s=new B.Sim({Mbh:10,vinf:40,q:5000,inc:0,node:0,argp:0,r0:20000}); s.advance(10,1e9); console.log('能量相对误差', (s.energy()-s.E0)/s.E0, '地球半长轴', s.orbit(s.idx.earth,s.idx.sun).a)"
 ```
 
-```powershell
-powershell -ExecutionPolicy Bypass -File deploy\deploy.ps1                         # Windows
-powershell -ExecutionPolicy Bypass -File deploy\deploy.ps1 -HostAddr 192.168.3.36
-```
+## 👤 作者
 
-脚本会：上传网站文件 → 写入 systemd 单元 `blackhole.service` → 在临时端口试运行并检查 `/health` → `panel-register add … --start` 登记并启动（再次运行自动改为 `--update`）→ 验收并打印访问地址。更新网站时重新运行同一条命令即可。
+Mike-CodeCat · 大学物理实践作业
