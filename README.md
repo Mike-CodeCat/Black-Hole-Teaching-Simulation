@@ -71,3 +71,21 @@ js/pages/*.js           首页、沉浸漫游、测验、术语表
 ```
 
 新增章节只需在 `js/chapters/` 下新建文件，调用 `App.chapter({...})` 注册，并在 `index.html` 中引入即可。
+
+## 🖥 部署到 codecat 面板服务器
+
+`deploy/` 目录提供一键部署（遵守面板部署规则：应用 id `blackhole`，代码只放 `/home/codecat/apps/blackhole/`，端口自动在 3000–3999 中选空闲端口（优先 3210），进程用户 codecat，Python 标准库无依赖，`GET /health` → `{"ok":true}`，只通过 `panel-register` 登记）。
+
+在**已配置 SSH 密钥的电脑**上，于项目根目录执行：
+
+```bash
+bash deploy/deploy.sh                 # macOS / Linux / Git Bash / WSL，默认 codecat@100.113.81.29
+bash deploy/deploy.sh 192.168.3.36    # 或用内网地址
+```
+
+```powershell
+powershell -ExecutionPolicy Bypass -File deploy\deploy.ps1                         # Windows
+powershell -ExecutionPolicy Bypass -File deploy\deploy.ps1 -HostAddr 192.168.3.36
+```
+
+脚本会：上传网站文件 → 写入 systemd 单元 `blackhole.service` → 在临时端口试运行并检查 `/health` → `panel-register add … --start` 登记并启动（再次运行自动改为 `--update`）→ 验收并打印访问地址。更新网站时重新运行同一条命令即可。
